@@ -17,7 +17,7 @@ public class GameField extends JPanel {
     private Hero mainHero;
 
     GameField(){
-
+        //Loading images from working folder
         try{
             background = ImageIO.read(new File("Background.jpg"));
             mainHero = new Hero("ShrekFace.png");
@@ -26,16 +26,17 @@ public class GameField extends JPanel {
             e.printStackTrace();
         }
 
-        addKeyListener(new KeyboardController());
+        addKeyListener(new KeyboardController());//Adding keyboard controller
         setFocusable(true);
 
-        Timer timer = new Timer(30, e -> repaint());
+        Timer timer = new Timer(30, e -> repaint());//Update by timer
         timer.start();
     }
 
     public void paintComponent(Graphics graphisc){
+        //Drawing background image and main hero model
+        //Background draws before main hero because it cleans up game field
         graphisc.drawImage(background,0,0,800,600,null);
         graphisc.drawImage(mainHero.getModel(),mainHero.getX(),465, null);
     }
-
 }

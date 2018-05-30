@@ -7,13 +7,13 @@ import java.awt.event.KeyListener;
 
 public class KeyboardController implements KeyListener {
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
+    public void keyTyped(KeyEvent e) {}
 
     @Override
     public void keyPressed(KeyEvent e) {
+        //Getting the key code
         int keyCode = e.getKeyCode();
+        //Moving hero and cancelling game
         switch (keyCode){
             case 27:
                 System.exit(0);
@@ -29,6 +29,6 @@ public class KeyboardController implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        Hero.moveHero(' ');
+        Hero.moveHero(' ');//Stops hero movement
     }
 }

@@ -17,9 +17,11 @@ public class Hero {
         catch (IOException e){
             e.printStackTrace();
         }
-        x=0;
+
+        x=0;//Drawing model at left bottom corner
     }
 
+    //There are two getters for getting hero model and position
     public Image getModel() {
         return model;
     }
