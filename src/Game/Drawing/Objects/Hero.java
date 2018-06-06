@@ -1,45 +1,30 @@
 package Game.Drawing.Objects;
 
-import javax.imageio.ImageIO;
+import Game.Drawing.GameWindow;
+import com.sun.javafx.geom.Vec2d;
+
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 public class Hero {
-    private static Image model;
-    private static int x;
-    private static int speed=30;
+    public Image model;
+    public int x;
+    private int speed=30;
 
-    public Hero(String modelPath){
-        try{
-            model = ImageIO.read(new File(modelPath));
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-
+    public Hero(Image model){
+        this.model = model;//Setting hero model
         x=0;//Drawing model at left bottom corner
     }
 
-    //There are two getters for getting hero model and position
-    public Image getModel() {
-        return model;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public static void moveHero(char direction){
+    public void moveHero(Vec2d direction){
         int modelWidth = model.getWidth(null);
-        switch(direction){
-            case 'l':
+        switch((int)direction.x){
+            case -1:
                 if (x-speed>-modelWidth /2)
                     x-=speed;
-                else x = 800-modelWidth/2;
+                else x = GameWindow.width -modelWidth/2;
                 break;
-            case 'r':
-                if(x+speed<800-modelWidth/2)
+            case 1:
+                if(x+speed<GameWindow.width-modelWidth/2)
                     x+=speed;
                 else x = -modelWidth/2;
         }
