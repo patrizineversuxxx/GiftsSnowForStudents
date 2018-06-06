@@ -1,7 +1,6 @@
 package Game.Controls;
 
 import Game.Drawing.GameField;
-import Game.Drawing.Objects.Hero;
 import com.sun.javafx.geom.Vec2d;
 
 import java.awt.event.KeyEvent;

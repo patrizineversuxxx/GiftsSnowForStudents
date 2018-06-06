@@ -10,8 +10,8 @@ import java.awt.*;
 
 public class GameField extends JPanel {
     private Image background;
-    private char key;
     public static Hero mainHero;
+    private int score;
 
     GameField(){
         //Loading images from working folder
@@ -25,10 +25,16 @@ public class GameField extends JPanel {
         timer.start();
     }
 
-    public void paintComponent(Graphics graphisc){
+    public void paintComponent(Graphics graphics){
         //Drawing background image and main hero model
         //Background draws before main hero because it cleans up game field
-        graphisc.drawImage(background,0,0,GameWindow.width,GameWindow.height,null);
-        graphisc.drawImage(mainHero.model,mainHero.x,400, null);
+        graphics.drawImage(background,0,0,GameWindow.width,GameWindow.height,null);
+        graphics.drawImage(mainHero.model,(int)mainHero.movement.x,
+                (int)mainHero.movement.y, null);
+
+        //Drawing score count
+        graphics.setColor(Color.white);
+        graphics.setFont(new Font("Arial", Font.PLAIN, 32));
+        graphics.drawString("Score: " + score,10,30);
     }
 }
